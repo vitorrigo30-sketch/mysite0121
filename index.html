@@ -31,6 +31,14 @@
     }(window, document,'script','https://connect.facebook.net/en_US/fbevents.js');
     fbq('init', '1121265662510362');
     fbq('track', 'PageView');
+
+    // Evento de clique no botão Pokémon
+    window.addEventListener('DOMContentLoaded', () => {
+      const botao = document.getElementById('botao-pokemon');
+      botao.addEventListener('click', () => {
+        fbq('track', 'ClickPokemon'); // evento customizado
+      });
+    });
   </script>
   <!-- End Meta Pixel Code -->
 
@@ -89,23 +97,7 @@
   </noscript>
   <!-- End Google Tag Manager (noscript) -->
 
-  <!-- Meta Pixel (noscript) -->
-  <noscript>
-    <img height="1" width="1" style="display:none"
-    src="https://www.facebook.com/tr?id=1121265662510362&ev=PageView&noscript=1"/>
-  </noscript>
-  <!-- End Meta Pixel (noscript) -->
-
-  <div class="card">
-    <h1>🔥 Site Teste GTM</h1>
-    <p>Site de teste para Google Tag Manager e Meta Pixel.</p>
-
-    <a href="https://www.pokemon.com" target="_blank" class="button" id="botao-pokemon">
-      Ir para Pokémon 🐱‍👤
-    </a>
-  </div>
-</body>
-</html>
+  <!--
 
 
 
