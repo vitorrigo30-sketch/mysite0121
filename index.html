@@ -1,204 +1,207 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
+  <!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PMXGHQP4');</script>
+<!-- End Google Tag Manager -->
   <meta charset="UTF-8">
-  <title>PokéStore | Produtos Pokémon</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+  <title>PokéShop – Produtos Pokémon Oficiais</title>
+  <meta name="description" content="Compre cards, brinquedos e produtos oficiais de Pokémon com entrega rápida e segura.">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Roboto&display=swap" rel="stylesheet">
   <style>
-    body {
-      margin: 0;
-      font-family: Arial, Helvetica, sans-serif;
-      background: #f4f4f4;
-      color: #333;
-    }
+    /* Reset */
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body { font-family: 'Roboto', sans-serif; background:#f0f0f0; color:#222; scroll-behavior: smooth; }
 
-    header {
-      background: linear-gradient(135deg, #ffcc00, #ff3d00);
-      color: #fff;
-      padding: 50px 20px;
-      text-align: center;
-    }
+    /* Header */
+    header { position: sticky; top:0; background:#222; color:#fff; display:flex; justify-content:space-between; align-items:center; padding:1rem 2rem; z-index:1000; }
+    header h1 { font-family: 'Montserrat', sans-serif; font-size:1.5rem; }
+    nav a { color:#fff; margin:0 1rem; text-decoration:none; transition: color 0.3s; }
+    nav a:hover { color:#ffde00; }
+    .cta-header { background:#ff0000; padding:0.5rem 1rem; border-radius:5px; transition:0.3s; }
+    .cta-header:hover { background:#ffde00; color:#222; }
 
-    header h1 {
-      font-size: 2.5rem;
-      margin-bottom: 10px;
-    }
+    /* Hero */
+    .hero { height:100vh; background:linear-gradient(to right, #3b4cca, #ffde00); display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; color:#fff; padding:0 2rem; }
+    .hero h2 { font-family:'Montserrat', sans-serif; font-size:3rem; margin-bottom:1rem; animation:fadeIn 1s ease forwards; opacity:0; }
+    .hero p { font-size:1.5rem; margin-bottom:2rem; animation:fadeIn 2s ease forwards; opacity:0; }
+    .hero .cta { background:#ff0000; color:#fff; padding:1rem 2rem; border-radius:10px; font-size:1.2rem; transition:0.3s; text-decoration:none; animation:fadeIn 3s ease forwards; opacity:0; }
+    .hero .cta:hover { background:#ffde00; color:#222; }
 
-    header p {
-      font-size: 1.2rem;
-      max-width: 700px;
-      margin: auto;
-    }
+    /* Produtos */
+    .produtos { padding:4rem 2rem; text-align:center; background:#fff; }
+    .produtos h3 { font-family:'Montserrat', sans-serif; font-size:2.5rem; margin-bottom:2rem; }
+    .grid-produtos { display:flex; overflow-x:auto; gap:2rem; scroll-behavior:smooth; padding-bottom:1rem; }
+    .produto-card { background:#f9f9f9; border-radius:10px; min-width:250px; padding:1rem; flex:0 0 auto; transition: transform 0.3s, box-shadow 0.3s; cursor:pointer; }
+    .produto-card:hover { transform: translateY(-5px); box-shadow:0 10px 20px rgba(0,0,0,0.2); }
+    .produto-card img { width:100%; border-radius:10px; margin-bottom:1rem; }
+    .produto-card h4 { font-family:'Montserrat', sans-serif; margin-bottom:0.5rem; }
+    .produto-card p { font-size:1.1rem; margin-bottom:1rem; }
+    .produto-card .botao { background:#ff0000; color:#fff; padding:0.5rem 1rem; border-radius:5px; text-decoration:none; transition:0.3s; display:inline-block; }
+    .produto-card .botao:hover { background:#ffde00; color:#222; }
 
-    section {
-      padding: 50px 20px;
-      max-width: 1100px;
-      margin: auto;
-    }
+    /* Benefícios */
+    .beneficios { padding:4rem 2rem; background:#f0f0f0; text-align:center; }
+    .beneficios h3 { font-family:'Montserrat', sans-serif; font-size:2.5rem; margin-bottom:2rem; }
+    .cards-beneficios { display:grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap:2rem; }
+    .beneficio { background:#fff; padding:2rem; border-radius:10px; transition: transform 0.3s, box-shadow 0.3s; }
+    .beneficio:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
+    .beneficio h4 { font-family:'Montserrat', sans-serif; margin-bottom:1rem; }
 
-    .benefits {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
-      text-align: center;
-    }
+    /* Depoimentos */
+    .depoimentos { padding:4rem 2rem; text-align:center; background:#fff; }
+    .depoimentos h3 { font-family:'Montserrat', sans-serif; font-size:2.5rem; margin-bottom:2rem; }
+    .depoimento-card { background:#f9f9f9; padding:2rem; border-radius:10px; margin-bottom:2rem; max-width:600px; margin-left:auto; margin-right:auto; animation:fadeIn 1s ease forwards; opacity:0; }
+    .depoimento-card img { width:50px; height:50px; border-radius:50%; margin-bottom:1rem; }
+    .depoimento-card p { font-style:italic; margin-bottom:0.5rem; }
+    .depoimento-card h5 { font-family:'Montserrat', sans-serif; }
 
-    .benefit {
-      background: #fff;
-      padding: 25px;
-      border-radius: 10px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    }
+    /* Sobre */
+    .sobre { padding:4rem 2rem; display:flex; flex-wrap:wrap; align-items:center; gap:2rem; background:#f0f0f0; }
+    .sobre-texto { flex:1 1 300px; }
+    .sobre-texto h3 { font-family:'Montserrat', sans-serif; font-size:2.5rem; margin-bottom:1rem; }
+    .sobre-texto p { font-size:1.1rem; line-height:1.6; }
+    .sobre-img { flex:1 1 300px; }
+    .sobre-img img { width:100%; border-radius:10px; }
 
-    .products {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 25px;
-    }
+    /* CTA Final */
+    .cta-final { padding:4rem 2rem; background:#3b4cca; color:#fff; text-align:center; }
+    .cta-final h3 { font-family:'Montserrat', sans-serif; font-size:2.5rem; margin-bottom:1rem; }
+    .cta-final a { background:#ff0000; color:#fff; padding:1rem 2rem; border-radius:10px; font-size:1.2rem; text-decoration:none; transition:0.3s; }
+    .cta-final a:hover { background:#ffde00; color:#222; }
 
-    .product {
-      background: #fff;
-      border-radius: 10px;
-      padding: 15px;
-      text-align: center;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    }
+    /* Footer */
+    footer { padding:2rem; background:#222; color:#fff; text-align:center; }
+    footer a { color:#ffde00; margin:0 0.5rem; text-decoration:none; }
 
-    .product img {
-      width: 100%;
-      max-height: 200px;
-      object-fit: contain;
-    }
+    /* WhatsApp flutuante */
+    .whatsapp { position:fixed; bottom:20px; right:20px; background:#25D366; color:#fff; padding:1rem 1.2rem; border-radius:50px; font-size:1.5rem; text-decoration:none; box-shadow:0 5px 15px rgba(0,0,0,0.3); transition:0.3s; z-index:1000; }
+    .whatsapp:hover { background:#128C7E; }
 
-    .product h3 {
-      margin: 10px 0;
-    }
+    /* Animações */
+    @keyframes fadeIn { from {opacity:0; transform:translateY(20px);} to {opacity:1; transform:translateY(0);} }
 
-    .price {
-      font-size: 1.2rem;
-      color: #e53935;
-      font-weight: bold;
-    }
-
-    .cta {
-      background: #ffcc00;
-      text-align: center;
-      padding: 50px 20px;
-    }
-
-    .cta h2 {
-      margin-bottom: 15px;
-    }
-
-    .cta a {
-      background: #25d366;
-      color: #fff;
-      padding: 15px 30px;
-      border-radius: 50px;
-      text-decoration: none;
-      font-size: 1.1rem;
-      font-weight: bold;
-    }
-
-    .whatsapp-float {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background: #25d366;
-      color: #fff;
-      padding: 15px 18px;
-      border-radius: 50%;
-      font-size: 22px;
-      text-decoration: none;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-    }
-
-    footer {
-      background: #222;
-      color: #fff;
-      text-align: center;
-      padding: 20px;
-      font-size: 0.9rem;
+    /* Responsivo */
+    @media (max-width:768px){
+      .hero h2 { font-size:2rem; }
+      .hero p { font-size:1.2rem; }
+      .sobre { flex-direction:column; text-align:center; }
     }
   </style>
 </head>
 <body>
 
-<header>
-  <h1>🔥 PokéStore 🔥</h1>
-  <p>Os melhores produtos Pokémon para fãs de verdade. Cartas, pelúcias, action figures e muito mais.</p>
-</header>
+  <!-- Header -->
+  <header>
+    <h1>PokéShop</h1>
+    <nav>
+      <a href="#produtos">Produtos</a>
+      <a href="#beneficios">Benefícios</a>
+      <a href="#sobre">Sobre</a>
+      <a href="#contato">Contato</a>
+    </nav>
+    <a href="#produtos" class="cta-header">Comprar Agora</a>
+  </header>
 
-<section>
-  <h2 style="text-align:center;">Por que comprar com a gente?</h2>
-  <div class="benefits">
-    <div class="benefit">✔ Produtos 100% originais</div>
-    <div class="benefit">🚚 Entrega rápida em todo o Brasil</div>
-    <div class="benefit">💬 Atendimento direto no WhatsApp</div>
-    <div class="benefit">⭐ Qualidade aprovada por fãs Pokémon</div>
-  </div>
-</section>
+  <!-- Hero -->
+  <section class="hero">
+    <h2>Descubra o Mundo Pokémon em Casa!</h2>
+    <p>Colecione, jogue e se divirta com nossos produtos oficiais!</p>
+    <a href="#produtos" class="cta">Ver Produtos</a>
+  </section>
 
-<section>
-  <h2 style="text-align:center;">Produtos em destaque</h2>
-  <div class="products">
-
-    <div class="product">
-      <img src="https://images.pokemontcg.io/base1/4_hires.png">
-      <h3>Carta Charizard Base Set</h3>
-      <p class="price">R$ 299,90</p>
+  <!-- Produtos -->
+  <section class="produtos" id="produtos">
+    <h3>Produtos em Destaque</h3>
+    <div class="grid-produtos">
+      <div class="produto-card">
+        <img src="https://assets.pokemon.com/assets/cms2/img/cards/web/XY10/XY10_PT_1.png" alt="Carta Pikachu">
+        <h4>Carta Pikachu</h4>
+        <p>R$ 29,90</p>
+        <a href="https://wa.me/5565992010667?text=Olá!%20Quero%20comprar%20a%20Carta%20Pikachu" class="botao" target="_blank">Comprar</a>
+      </div>
+      <div class="produto-card">
+        <img src="https://assets.pokemon.com/assets/cms2/img/cards/web/XY10/XY10_PT_2.png" alt="Boneco Charizard">
+        <h4>Boneco Charizard</h4>
+        <p>R$ 149,90</p>
+        <a href="https://wa.me/5565992010667?text=Olá!%20Quero%20comprar%20o%20Boneco%20Charizard" class="botao" target="_blank">Comprar</a>
+      </div>
+      <div class="produto-card">
+        <img src="https://assets.pokemon.com/assets/cms2/img/cards/web/XY10/XY10_PT_3.png" alt="Caneca Pokémon">
+        <h4>Caneca Pokémon</h4>
+        <p>R$ 39,90</p>
+        <a href="https://wa.me/5565992010667?text=Olá!%20Quero%20comprar%20a%20Caneca%20Pokémon" class="botao" target="_blank">Comprar</a>
+      </div>
     </div>
+  </section>
 
-    <div class="product">
-      <img src="https://assets.pokemon.com/assets/cms2/img/pokedex/full/025.png">
-      <h3>Pelúcia Pikachu</h3>
-      <p class="price">R$ 129,90</p>
+  <!-- Benefícios -->
+  <section class="beneficios" id="beneficios">
+    <h3>Por que comprar aqui?</h3>
+    <div class="cards-beneficios">
+      <div class="beneficio"><h4>Produtos Oficiais</h4><p>Itens 100% Pokémon.</p></div>
+      <div class="beneficio"><h4>Entrega Rápida</h4><p>Receba em poucos dias.</p></div>
+      <div class="beneficio"><h4>Pagamento Seguro</h4><p>Cartão, PIX ou PayPal.</p></div>
+      <div class="beneficio"><h4>Atendimento 24h</h4><p>Suporte sempre disponível.</p></div>
+      <div class="beneficio"><h4>Garantia de Satisfação</h4><p>Se não curtir, devolvemos.</p></div>
     </div>
+  </section>
 
-    <div class="product">
-      <img src="https://assets.pokemon.com/assets/cms2/img/pokedex/full/006.png">
-      <h3>Action Figure Charizard</h3>
-      <p class="price">R$ 189,90</p>
+  <!-- Depoimentos -->
+  <section class="depoimentos">
+    <h3>O que nossos clientes dizem</h3>
+    <div class="depoimento-card">
+      <img src="https://i.pravatar.cc/50?img=1" alt="Cliente 1">
+      <p>"Comprei a carta do Pikachu e chegou rapidinho. Muito satisfeito!"</p>
+      <h5>Lucas S.</h5>
     </div>
-
-    <div class="product">
-      <img src="https://assets.pokemon.com/assets/cms2/img/pokedex/full/150.png">
-      <h3>Figure Mewtwo</h3>
-      <p class="price">R$ 219,90</p>
+    <div class="depoimento-card">
+      <img src="https://i.pravatar.cc/50?img=2" alt="Cliente 2">
+      <p>"A loja é incrível! Produtos originais e atendimento excelente."</p>
+      <h5>Ana M.</h5>
     </div>
+  </section>
 
-    <div class="product">
-      <img src="https://assets.pokemon.com/assets/cms2/img/pokedex/full/133.png">
-      <h3>Pelúcia Eevee</h3>
-      <p class="price">R$ 119,90</p>
+  <!-- Sobre -->
+  <section class="sobre" id="sobre">
+    <div class="sobre-texto">
+      <h3>Sobre a PokéShop</h3>
+      <p>A PokéShop nasceu da paixão por Pokémon e colecionáveis. Queremos levar diversão e nostalgia pra todos os fãs!</p>
     </div>
-
-    <div class="product">
-      <img src="https://images.pokemontcg.io/swsh4/25_hires.png">
-      <h3>Carta VMAX Pikachu</h3>
-      <p class="price">R$ 149,90</p>
+    <div class="sobre-img">
+      <img src="https://assets.pokemon.com/assets/cms2/img/pokedex/full/025.png" alt="Pokémon">
     </div>
+  </section>
 
-  </div>
-</section>
+  <!-- CTA Final -->
+  <section class="cta-final">
+    <h3>Não perca tempo! Garanta já seus produtos Pokémon!</h3>
+    <a href="https://wa.me/5565992010667?text=Olá!%20Quero%20comprar%20produtos%20Pokémon" target="_blank">Comprar Agora</a>
+  </section>
 
-<section class="cta">
-  <h2>Curtiu algum produto?</h2>
-  <p>Chama a gente no WhatsApp e garanta o seu agora mesmo!</p>
-  <br>
-  <a href="https://wa.me/5565992010667" target="_blank">
-    Falar no WhatsApp
-  </a>
-</section>
+  <!-- Footer -->
+  <footer id="contato">
+    <p>Contato: contato@pokeshop.com | WhatsApp: (65) 99201-0667</p>
+    <p>Siga-nos: 
+      <a href="#">Instagram</a> | 
+      <a href="#">TikTok</a>
+    </p>
+    <p>© 2026 PokéShop. Todos os direitos reservados.</p>
+  </footer>
 
-<a class="whatsapp-float" href="https://wa.me/5565992010667" target="_blank">💬</a>
+  <!-- Botão WhatsApp flutuante -->
+  <a href="https://wa.me/5565992010667?text=Olá!%20Quero%20comprar%20produtos%20Pokémon" class="whatsapp" target="_blank">💬</a>
 
-<footer>
-  © 2026 PokéStore — Este site é um projeto educacional.
-</footer>
-
-</body>
+</body><!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PMXGHQP4"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
 </html>
+
 
 
