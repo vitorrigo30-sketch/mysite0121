@@ -214,12 +214,123 @@ src="https://www.facebook.com/tr?id=1121265662510362&ev=PageView&noscript=1"
 
   <!-- Botão WhatsApp flutuante -->
   <a href="https://wa.me/5565992010667?text=Olá!%20Quero%20comprar%20produtos%20Pokémon" class="whatsapp" target="_blank">💬</a>
+<!-- BOTÃO FLUTUANTE DE PEDIDO -->
+<button id="pedidoBtn">🛒 Pedido</button>
 
+<!-- MODAL DE FORMULÁRIO -->
+<div id="pedidoModal">
+  <div class="modal-content">
+    <span id="fecharModal">✖</span>
+    <h2>Antes de continuar 👇</h2>
+
+    <form id="pedidoForm">
+      <input type="text" placeholder="Seu nome" required>
+      <input type="email" placeholder="Seu e-mail" required>
+      <button type="submit">Ir para o pedido</button>
+    </form>
+  </div>
+</div>
+
+<style>
+/* BOTÃO PEDIDO */
+#pedidoBtn {
+  position: fixed;
+  bottom: 90px;
+  right: 20px;
+  background: linear-gradient(135deg, #ffcb05, #3b4cca);
+  color: #fff;
+  border: none;
+  padding: 14px 18px;
+  border-radius: 50px;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+  z-index: 1000;
+}
+
+/* FUNDO MODAL */
+#pedidoModal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  z-index: 2000;
+}
+
+/* CAIXA MODAL */
+.modal-content {
+  background: #fff;
+  max-width: 400px;
+  margin: auto;
+  margin-top: 15vh;
+  padding: 25px;
+  border-radius: 12px;
+  text-align: center;
+  position: relative;
+  font-family: 'Roboto', sans-serif;
+}
+
+.modal-content h2 {
+  margin-bottom: 15px;
+}
+
+/* INPUTS */
+.modal-content input {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 12px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+/* BOTÃO FORM */
+.modal-content button {
+  width: 100%;
+  padding: 12px;
+  background: #3b4cca;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* FECHAR */
+#fecharModal {
+  position: absolute;
+  top: 10px;
+  right: 14px;
+  cursor: pointer;
+  font-size: 18px;
+}
+</style>
+
+<script>
+const pedidoBtn = document.getElementById("pedidoBtn");
+const modal = document.getElementById("pedidoModal");
+const fechar = document.getElementById("fecharModal");
+const form = document.getElementById("pedidoForm");
+
+pedidoBtn.onclick = () => modal.style.display = "block";
+fechar.onclick = () => modal.style.display = "none";
+
+form.onsubmit = (e) => {
+  e.preventDefault();
+  window.open(
+    "https://docs.google.com/forms/d/e/1FAIpQLSfPF4-7CDjYOwxkzGEw4fmfkZ-7WMki4brG6fi4mtre4U1kJQ/viewform?usp=publish-editor",
+    "_blank"
+  );
+  modal.style.display = "none";
+};
+</script>
+  
 </body><!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PMXGHQP4"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
 </html>
+
 
 
 
