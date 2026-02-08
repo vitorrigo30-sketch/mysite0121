@@ -1,335 +1,215 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-  <!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-PMXGHQP4');</script>
-<!-- End Google Tag Manager -->
+import logoFem from "@/assets/logo-fem.png";
+import storePhoto from "@/assets/store-photo.png";
+import { TrendingUp, DollarSign, Users, Award, ChevronRight, BarChart3, Shield, Zap } from "lucide-react";
+import MarketChart from "@/components/MarketChart";
+import ComparisonTable from "@/components/ComparisonTable";
+import InvestmentCard from "@/components/InvestmentCard";
 
-  <!-- Meta Pixel Code -->
-<script>
-!function(f,b,e,v,n,t,s)
-{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];
-s.parentNode.insertBefore(t,s)}(window, document,'script',
-'https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', '1121265662510362');
-fbq('track', 'PageView');
-</script>
-<noscript><img height="1" width="1" style="display:none"
-src="https://www.facebook.com/tr?id=1121265662510362&ev=PageView&noscript=1"
-/></noscript>
-<!-- End Meta Pixel Code -->
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PokéShop – Produtos Pokémon Oficiais</title>
-  <meta name="description" content="Compre cards, brinquedos e produtos oficiais de Pokémon com entrega rápida e segura.">
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Roboto&display=swap" rel="stylesheet">
-  <style>
-    /* Reset */
-    * { margin:0; padding:0; box-sizing:border-box; }
-    body { font-family: 'Roboto', sans-serif; background:#f0f0f0; color:#222; scroll-behavior: smooth; }
+const Index = () => {
+  return (
+    <div className="min-h-screen bg-background">
+      {/* Header */}
+      <header className="fixed top-0 w-full z-50 bg-background/80 backdrop-blur-xl border-b border-border">
+        <div className="container mx-auto px-6 py-4 flex items-center justify-between">
+          <img src={logoFem} alt="Pele & Luz" className="h-10 object-contain" />
+          <a
+            href="#contato"
+            className="bg-primary text-primary-foreground px-6 py-2.5 rounded-lg font-semibold text-sm hover:opacity-90 transition-opacity"
+          >
+            Seja um Franqueado
+          </a>
+        </div>
+      </header>
 
-    /* Header */
-    header { position: sticky; top:0; background:#222; color:#fff; display:flex; justify-content:space-between; align-items:center; padding:1rem 2rem; z-index:1000; }
-    header h1 { font-family: 'Montserrat', sans-serif; font-size:1.5rem; }
-    nav a { color:#fff; margin:0 1rem; text-decoration:none; transition: color 0.3s; }
-    nav a:hover { color:#ffde00; }
-    .cta-header { background:#ff0000; padding:0.5rem 1rem; border-radius:5px; transition:0.3s; }
-    .cta-header:hover { background:#ffde00; color:#222; }
+      {/* Hero */}
+      <section className="relative pt-32 pb-20 overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-b from-primary/5 to-transparent" />
+        <div className="container mx-auto px-6 relative">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div className="animate-fade-in">
+              <span className="inline-block bg-primary/10 text-primary px-4 py-1.5 rounded-full text-sm font-medium mb-6">
+                Franquia de Alta Rentabilidade
+              </span>
+              <h1 className="text-4xl md:text-6xl font-bold leading-tight mb-6">
+                Invista no mercado que{" "}
+                <span className="text-gradient">mais cresce</span> no Brasil
+              </h1>
+              <p className="text-lg text-muted-foreground mb-8 max-w-lg">
+                O mercado de depilação a laser movimenta mais de R$ 2,5 bilhões por ano no Brasil.
+                A Pele & Luz oferece o melhor retorno sobre investimento do setor.
+              </p>
+              <div className="flex flex-wrap gap-4">
+                <a
+                  href="#dados"
+                  className="bg-primary text-primary-foreground px-8 py-3.5 rounded-lg font-semibold hover:opacity-90 transition-opacity flex items-center gap-2"
+                >
+                  Ver Dados de Faturamento <ChevronRight className="w-4 h-4" />
+                </a>
+                <a
+                  href="#contato"
+                  className="border border-border text-foreground px-8 py-3.5 rounded-lg font-semibold hover:bg-secondary transition-colors"
+                >
+                  Fale Conosco
+                </a>
+              </div>
+            </div>
+            <div className="animate-fade-in" style={{ animationDelay: "0.3s" }}>
+              <img
+                src={storePhoto}
+                alt="Unidade Pele & Luz"
+                className="rounded-2xl glow-primary w-full"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
 
-    /* Hero */
-    .hero { height:100vh; background:linear-gradient(to right, #3b4cca, #ffde00); display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; color:#fff; padding:0 2rem; }
-    .hero h2 { font-family:'Montserrat', sans-serif; font-size:3rem; margin-bottom:1rem; animation:fadeIn 1s ease forwards; opacity:0; }
-    .hero p { font-size:1.5rem; margin-bottom:2rem; animation:fadeIn 2s ease forwards; opacity:0; }
-    .hero .cta { background:#ff0000; color:#fff; padding:1rem 2rem; border-radius:10px; font-size:1.2rem; transition:0.3s; text-decoration:none; animation:fadeIn 3s ease forwards; opacity:0; }
-    .hero .cta:hover { background:#ffde00; color:#222; }
+      {/* KPI Numbers */}
+      <section className="py-16 border-y border-border">
+        <div className="container mx-auto px-6">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+            {[
+              { icon: DollarSign, value: "R$ 180k", label: "Faturamento médio mensal por unidade" },
+              { icon: TrendingUp, value: "24%", label: "Margem líquida média" },
+              { icon: Users, value: "18 meses", label: "Payback médio do investimento" },
+              { icon: Award, value: "+40", label: "Unidades em operação" },
+            ].map((kpi, i) => (
+              <div key={i} className="text-center animate-fade-in" style={{ animationDelay: `${i * 0.15}s` }}>
+                <kpi.icon className="w-8 h-8 text-primary mx-auto mb-3" />
+                <p className="text-3xl md:text-4xl font-bold font-serif text-gradient">{kpi.value}</p>
+                <p className="text-sm text-muted-foreground mt-2">{kpi.label}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
 
-    /* Produtos */
-    .produtos { padding:4rem 2rem; text-align:center; background:#fff; }
-    .produtos h3 { font-family:'Montserrat', sans-serif; font-size:2.5rem; margin-bottom:2rem; }
-    .grid-produtos { display:flex; overflow-x:auto; gap:2rem; scroll-behavior:smooth; padding-bottom:1rem; }
-    .produto-card { background:#f9f9f9; border-radius:10px; min-width:250px; padding:1rem; flex:0 0 auto; transition: transform 0.3s, box-shadow 0.3s; cursor:pointer; }
-    .produto-card:hover { transform: translateY(-5px); box-shadow:0 10px 20px rgba(0,0,0,0.2); }
-    .produto-card img { width:100%; border-radius:10px; margin-bottom:1rem; }
-    .produto-card h4 { font-family:'Montserrat', sans-serif; margin-bottom:0.5rem; }
-    .produto-card p { font-size:1.1rem; margin-bottom:1rem; }
-    .produto-card .botao { background:#ff0000; color:#fff; padding:0.5rem 1rem; border-radius:5px; text-decoration:none; transition:0.3s; display:inline-block; }
-    .produto-card .botao:hover { background:#ffde00; color:#222; }
+      {/* Market Data */}
+      <section id="dados" className="py-20">
+        <div className="container mx-auto px-6">
+          <div className="text-center mb-14">
+            <h2 className="text-3xl md:text-5xl font-bold mb-4">
+              Dados reais de <span className="text-gradient">faturamento</span>
+            </h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto">
+              Comparativo de faturamento entre a Pele & Luz e a média do mercado de depilação a laser no Brasil.
+            </p>
+          </div>
+          <MarketChart />
+        </div>
+      </section>
 
-    /* Benefícios */
-    .beneficios { padding:4rem 2rem; background:#f0f0f0; text-align:center; }
-    .beneficios h3 { font-family:'Montserrat', sans-serif; font-size:2.5rem; margin-bottom:2rem; }
-    .cards-beneficios { display:grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap:2rem; }
-    .beneficio { background:#fff; padding:2rem; border-radius:10px; transition: transform 0.3s, box-shadow 0.3s; }
-    .beneficio:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
-    .beneficio h4 { font-family:'Montserrat', sans-serif; margin-bottom:1rem; }
+      {/* Comparison Table */}
+      <section className="py-20 bg-secondary/30">
+        <div className="container mx-auto px-6">
+          <div className="text-center mb-14">
+            <h2 className="text-3xl md:text-5xl font-bold mb-4">
+              Por que a <span className="text-gradient">Pele & Luz</span>?
+            </h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto">
+              Compare nossa franquia com outras opções do mercado de depilação a laser.
+            </p>
+          </div>
+          <ComparisonTable />
+        </div>
+      </section>
 
-    /* Depoimentos */
-    .depoimentos { padding:4rem 2rem; text-align:center; background:#fff; }
-    .depoimentos h3 { font-family:'Montserrat', sans-serif; font-size:2.5rem; margin-bottom:2rem; }
-    .depoimento-card { background:#f9f9f9; padding:2rem; border-radius:10px; margin-bottom:2rem; max-width:600px; margin-left:auto; margin-right:auto; animation:fadeIn 1s ease forwards; opacity:0; }
-    .depoimento-card img { width:50px; height:50px; border-radius:50%; margin-bottom:1rem; }
-    .depoimento-card p { font-style:italic; margin-bottom:0.5rem; }
-    .depoimento-card h5 { font-family:'Montserrat', sans-serif; }
+      {/* Investment Plans */}
+      <section className="py-20">
+        <div className="container mx-auto px-6">
+          <div className="text-center mb-14">
+            <h2 className="text-3xl md:text-5xl font-bold mb-4">
+              Modelos de <span className="text-gradient">investimento</span>
+            </h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto">
+              Opções de franquia adaptadas ao seu perfil de investidor.
+            </p>
+          </div>
+          <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+            <InvestmentCard
+              title="Compact"
+              investment="R$ 180 mil"
+              revenue="R$ 120k/mês"
+              payback="14 meses"
+              features={["1 sala de atendimento", "Equipamento de última geração", "Treinamento completo", "Suporte operacional"]}
+            />
+            <InvestmentCard
+              title="Standard"
+              investment="R$ 290 mil"
+              revenue="R$ 180k/mês"
+              payback="18 meses"
+              featured
+              features={["2 salas de atendimento", "Equipamento de última geração", "Treinamento completo", "Marketing digital incluso", "Suporte premium"]}
+            />
+            <InvestmentCard
+              title="Premium"
+              investment="R$ 450 mil"
+              revenue="R$ 300k/mês"
+              payback="16 meses"
+              features={["3+ salas de atendimento", "Multi-equipamentos", "Treinamento VIP", "Marketing 360°", "Consultoria estratégica"]}
+            />
+          </div>
+        </div>
+      </section>
 
-    /* Sobre */
-    .sobre { padding:4rem 2rem; display:flex; flex-wrap:wrap; align-items:center; gap:2rem; background:#f0f0f0; }
-    .sobre-texto { flex:1 1 300px; }
-    .sobre-texto h3 { font-family:'Montserrat', sans-serif; font-size:2.5rem; margin-bottom:1rem; }
-    .sobre-texto p { font-size:1.1rem; line-height:1.6; }
-    .sobre-img { flex:1 1 300px; }
-    .sobre-img img { width:100%; border-radius:10px; }
+      {/* Differentials */}
+      <section className="py-20 bg-secondary/30">
+        <div className="container mx-auto px-6">
+          <div className="text-center mb-14">
+            <h2 className="text-3xl md:text-5xl font-bold mb-4">Diferenciais competitivos</h2>
+          </div>
+          <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+            {[
+              { icon: Zap, title: "Tecnologia de Ponta", desc: "Equipamentos com tecnologia Alexandrite e Nd:YAG, referência mundial em depilação a laser." },
+              { icon: BarChart3, title: "ROI Comprovado", desc: "Retorno sobre investimento acima da média do mercado, com dados auditados e transparentes." },
+              { icon: Shield, title: "Suporte Integral", desc: "Acompanhamento desde a implantação até a operação, com treinamento contínuo da equipe." },
+            ].map((item, i) => (
+              <div key={i} className="card-shine rounded-2xl p-8 text-center">
+                <item.icon className="w-10 h-10 text-primary mx-auto mb-4" />
+                <h3 className="text-xl font-bold font-serif mb-3">{item.title}</h3>
+                <p className="text-muted-foreground text-sm">{item.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
 
-    /* CTA Final */
-    .cta-final { padding:4rem 2rem; background:#3b4cca; color:#fff; text-align:center; }
-    .cta-final h3 { font-family:'Montserrat', sans-serif; font-size:2.5rem; margin-bottom:1rem; }
-    .cta-final a { background:#ff0000; color:#fff; padding:1rem 2rem; border-radius:10px; font-size:1.2rem; text-decoration:none; transition:0.3s; }
-    .cta-final a:hover { background:#ffde00; color:#222; }
+      {/* CTA */}
+      <section id="contato" className="py-20">
+        <div className="container mx-auto px-6">
+          <div className="card-shine rounded-3xl p-12 md:p-16 text-center max-w-3xl mx-auto glow-primary">
+            <h2 className="text-3xl md:text-5xl font-bold mb-4">
+              Pronto para investir no seu futuro?
+            </h2>
+            <p className="text-muted-foreground mb-8 max-w-lg mx-auto">
+              Entre em contato e receba o material completo da franquia Pele & Luz com todos os dados financeiros.
+            </p>
+            <a
+              href="https://wa.me/5500000000000?text=Quero%20saber%20mais%20sobre%20a%20franquia%20Pele%20%26%20Luz"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-10 py-4 rounded-xl font-semibold text-lg hover:opacity-90 transition-opacity"
+            >
+              Falar com um Consultor <ChevronRight className="w-5 h-5" />
+            </a>
+          </div>
+        </div>
+      </section>
 
-    /* Footer */
-    footer { padding:2rem; background:#222; color:#fff; text-align:center; }
-    footer a { color:#ffde00; margin:0 0.5rem; text-decoration:none; }
-
-    /* WhatsApp flutuante */
-    .whatsapp { position:fixed; bottom:20px; right:20px; background:#25D366; color:#fff; padding:1rem 1.2rem; border-radius:50px; font-size:1.5rem; text-decoration:none; box-shadow:0 5px 15px rgba(0,0,0,0.3); transition:0.3s; z-index:1000; }
-    .whatsapp:hover { background:#128C7E; }
-
-    /* Animações */
-    @keyframes fadeIn { from {opacity:0; transform:translateY(20px);} to {opacity:1; transform:translateY(0);} }
-
-    /* Responsivo */
-    @media (max-width:768px){
-      .hero h2 { font-size:2rem; }
-      .hero p { font-size:1.2rem; }
-      .sobre { flex-direction:column; text-align:center; }
-    }
-  </style>
-</head>
-<body>
-
-  <!-- Header -->
-  <header>
-    <h1>PokéShop</h1>
-    <nav>
-      <a href="#produtos">Produtos</a>
-      <a href="#beneficios">Benefícios</a>
-      <a href="#sobre">Sobre</a>
-      <a href="#contato">Contato</a>
-    </nav>
-    <a href="#produtos" class="cta-header">Comprar Agora</a>
-  </header>
-
-  <!-- Hero -->
-  <section class="hero">
-    <h2>Descubra o Mundo Pokémon em Casa!</h2>
-    <p>Colecione, jogue e se divirta com nossos produtos oficiais!</p>
-    <a href="#produtos" class="cta">Ver Produtos</a>
-  </section>
-
-  <!-- Produtos -->
-  <section class="produtos" id="produtos">
-    <h3>Produtos em Destaque</h3>
-    <div class="grid-produtos">
-      <div class="produto-card">
-        <img src="https://assets.pokemon.com/assets/cms2/img/cards/web/XY10/XY10_PT_1.png" alt="Carta Pikachu">
-        <h4>Carta Pikachu</h4>
-        <p>R$ 29,90</p>
-        <a href="https://wa.me/5565992010667?text=Olá!%20Quero%20comprar%20a%20Carta%20Pikachu" class="botao" target="_blank">Comprar</a>
-      </div>
-      <div class="produto-card">
-        <img src="https://assets.pokemon.com/assets/cms2/img/cards/web/XY10/XY10_PT_2.png" alt="Boneco Charizard">
-        <h4>Boneco Charizard</h4>
-        <p>R$ 149,90</p>
-        <a href="https://wa.me/5565992010667?text=Olá!%20Quero%20comprar%20o%20Boneco%20Charizard" class="botao" target="_blank">Comprar</a>
-      </div>
-      <div class="produto-card">
-        <img src="https://assets.pokemon.com/assets/cms2/img/cards/web/XY10/XY10_PT_3.png" alt="Caneca Pokémon">
-        <h4>Caneca Pokémon</h4>
-        <p>R$ 39,90</p>
-        <a href="https://wa.me/5565992010667?text=Olá!%20Quero%20comprar%20a%20Caneca%20Pokémon" class="botao" target="_blank">Comprar</a>
-      </div>
+      {/* Footer */}
+      <footer className="py-10 border-t border-border">
+        <div className="container mx-auto px-6 text-center text-muted-foreground text-sm">
+          <p>© 2025 Pele & Luz Depilação a Laser. Todos os direitos reservados.</p>
+          <p className="mt-2">Os dados de faturamento apresentados são baseados em médias das unidades em operação e podem variar.</p>
+        </div>
+      </footer>
     </div>
-  </section>
-
-  <!-- Benefícios -->
-  <section class="beneficios" id="beneficios">
-    <h3>Por que comprar aqui?</h3>
-    <div class="cards-beneficios">
-      <div class="beneficio"><h4>Produtos Oficiais</h4><p>Itens 100% Pokémon.</p></div>
-      <div class="beneficio"><h4>Entrega Rápida</h4><p>Receba em poucos dias.</p></div>
-      <div class="beneficio"><h4>Pagamento Seguro</h4><p>Cartão, PIX ou PayPal.</p></div>
-      <div class="beneficio"><h4>Atendimento 24h</h4><p>Suporte sempre disponível.</p></div>
-      <div class="beneficio"><h4>Garantia de Satisfação</h4><p>Se não curtir, devolvemos.</p></div>
-    </div>
-  </section>
-
-  <!-- Depoimentos -->
-  <section class="depoimentos">
-    <h3>O que nossos clientes dizem</h3>
-    <div class="depoimento-card">
-      <img src="https://i.pravatar.cc/50?img=1" alt="Cliente 1">
-      <p>"Comprei a carta do Pikachu e chegou rapidinho. Muito satisfeito!"</p>
-      <h5>Lucas S.</h5>
-    </div>
-    <div class="depoimento-card">
-      <img src="https://i.pravatar.cc/50?img=2" alt="Cliente 2">
-      <p>"A loja é incrível! Produtos originais e atendimento excelente."</p>
-      <h5>Ana M.</h5>
-    </div>
-  </section>
-
-  <!-- Sobre -->
-  <section class="sobre" id="sobre">
-    <div class="sobre-texto">
-      <h3>Sobre a PokéShop</h3>
-      <p>A PokéShop nasceu da paixão por Pokémon e colecionáveis. Queremos levar diversão e nostalgia pra todos os fãs!</p>
-    </div>
-    <div class="sobre-img">
-      <img src="https://assets.pokemon.com/assets/cms2/img/pokedex/full/025.png" alt="Pokémon">
-    </div>
-  </section>
-
-  <!-- CTA Final -->
-  <section class="cta-final">
-    <h3>Não perca tempo! Garanta já seus produtos Pokémon!</h3>
-    <a href="https://wa.me/5565992010667?text=Olá!%20Quero%20comprar%20produtos%20Pokémon" target="_blank">Comprar Agora</a>
-  </section>
-
-  <!-- Footer -->
-  <footer id="contato">
-    <p>Contato: contato@pokeshop.com | WhatsApp: (65) 99201-0667</p>
-    <p>Siga-nos: 
-      <a href="#">Instagram</a> | 
-      <a href="#">TikTok</a>
-    </p>
-    <p>© 2026 PokéShop. Todos os direitos reservados.</p>
-  </footer>
-
-  <!-- Botão WhatsApp flutuante -->
-  <a href="https://wa.me/5565992010667?text=Olá!%20Quero%20comprar%20produtos%20Pokémon" class="whatsapp" target="_blank">💬</a>
-<!-- BOTÃO FLUTUANTE DE PEDIDO -->
-<button id="pedidoBtn">🛒 Pedido</button>
-
-<!-- MODAL DE FORMULÁRIO -->
-<div id="pedidoModal">
-  <div class="modal-content">
-    <span id="fecharModal">✖</span>
-    <h2>Antes de continuar 👇</h2>
-
-    <form id="pedidoForm">
-      <input type="text" placeholder="Seu nome" required>
-      <input type="email" placeholder="Seu e-mail" required>
-      <button type="submit">Ir para o pedido</button>
-    </form>
-  </div>
-</div>
-
-<style>
-/* BOTÃO PEDIDO */
-#pedidoBtn {
-  position: fixed;
-  bottom: 90px;
-  right: 20px;
-  background: linear-gradient(135deg, #ffcb05, #3b4cca);
-  color: #fff;
-  border: none;
-  padding: 14px 18px;
-  border-radius: 50px;
-  font-size: 15px;
-  font-weight: bold;
-  cursor: pointer;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
-  z-index: 1000;
-}
-
-/* FUNDO MODAL */
-#pedidoModal {
-  display: none;
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.6);
-  z-index: 2000;
-}
-
-/* CAIXA MODAL */
-.modal-content {
-  background: #fff;
-  max-width: 400px;
-  margin: auto;
-  margin-top: 15vh;
-  padding: 25px;
-  border-radius: 12px;
-  text-align: center;
-  position: relative;
-  font-family: 'Roboto', sans-serif;
-}
-
-.modal-content h2 {
-  margin-bottom: 15px;
-}
-
-/* INPUTS */
-.modal-content input {
-  width: 100%;
-  padding: 12px;
-  margin-bottom: 12px;
-  border-radius: 8px;
-  border: 1px solid #ccc;
-}
-
-/* BOTÃO FORM */
-.modal-content button {
-  width: 100%;
-  padding: 12px;
-  background: #3b4cca;
-  color: #fff;
-  border: none;
-  border-radius: 8px;
-  font-weight: bold;
-  cursor: pointer;
-}
-
-/* FECHAR */
-#fecharModal {
-  position: absolute;
-  top: 10px;
-  right: 14px;
-  cursor: pointer;
-  font-size: 18px;
-}
-</style>
-
-<script>
-const pedidoBtn = document.getElementById("pedidoBtn");
-const modal = document.getElementById("pedidoModal");
-const fechar = document.getElementById("fecharModal");
-const form = document.getElementById("pedidoForm");
-
-pedidoBtn.onclick = () => modal.style.display = "block";
-fechar.onclick = () => modal.style.display = "none";
-
-form.onsubmit = (e) => {
-  e.preventDefault();
-  window.open(
-    "https://docs.google.com/forms/d/e/1FAIpQLSfPF4-7CDjYOwxkzGEw4fmfkZ-7WMki4brG6fi4mtre4U1kJQ/viewform?usp=publish-editor",
-    "_blank"
   );
-  modal.style.display = "none";
 };
-</script>
-  
-</body><!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PMXGHQP4"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
-</html>
+
+export default Index;
+
+
 
 
 
