@@ -2,102 +2,203 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <title>Site Teste GTM | Pokémon</title>
-
-  <!-- Google Tag Manager -->
-  <script>
-    (function(w,d,s,l,i){
-      w[l]=w[l]||[];
-      w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});
-      var f=d.getElementsByTagName(s)[0],
-          j=d.createElement(s),
-          dl=l!='dataLayer'?'&l='+l:'';
-      j.async=true;
-      j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;
-      f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-PMXGHQP4');
-  </script>
-  <!-- End Google Tag Manager -->
-
-  <!-- Meta Pixel Code -->
-  <script>
-    !function(f,b,e,v,n,t,s){
-      if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-      n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-      if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-      n.queue=[];t=b.createElement(e);t.async=!0;
-      t.src=v;s=b.getElementsByTagName(e)[0];
-      s.parentNode.insertBefore(t,s);
-    }(window, document,'script','https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init', '1121265662510362');
-    fbq('track', 'PageView');
-
-    // Evento de clique no botão Pokémon
-    window.addEventListener('DOMContentLoaded', () => {
-      const botao = document.getElementById('botao-pokemon');
-      botao.addEventListener('click', () => {
-        fbq('track', 'ClickPokemon'); // evento customizado
-      });
-    });
-  </script>
-  <!-- End Meta Pixel Code -->
+  <title>PokéStore | Produtos Pokémon</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <style>
     body {
       margin: 0;
-      font-family: Arial, sans-serif;
-      background: linear-gradient(135deg, #ff0000, #ffffff);
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .card {
-      background: white;
-      padding: 40px;
-      border-radius: 16px;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-      text-align: center;
-      max-width: 400px;
-    }
-
-    h1 {
-      margin-top: 0;
-      color: #cc0000;
-    }
-
-    p {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #f4f4f4;
       color: #333;
-      margin-bottom: 30px;
     }
 
-    a.button {
-      display: inline-block;
-      padding: 15px 30px;
-      background: #ffcc00;
-      color: #000;
-      text-decoration: none;
+    header {
+      background: linear-gradient(135deg, #ffcc00, #ff3d00);
+      color: #fff;
+      padding: 50px 20px;
+      text-align: center;
+    }
+
+    header h1 {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+    }
+
+    header p {
+      font-size: 1.2rem;
+      max-width: 700px;
+      margin: auto;
+    }
+
+    section {
+      padding: 50px 20px;
+      max-width: 1100px;
+      margin: auto;
+    }
+
+    .benefits {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      text-align: center;
+    }
+
+    .benefit {
+      background: #fff;
+      padding: 25px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    .products {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 25px;
+    }
+
+    .product {
+      background: #fff;
+      border-radius: 10px;
+      padding: 15px;
+      text-align: center;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    .product img {
+      width: 100%;
+      max-height: 200px;
+      object-fit: contain;
+    }
+
+    .product h3 {
+      margin: 10px 0;
+    }
+
+    .price {
+      font-size: 1.2rem;
+      color: #e53935;
       font-weight: bold;
-      border-radius: 30px;
-      transition: transform 0.2s, box-shadow 0.2s;
     }
 
-    a.button:hover {
-      transform: scale(1.05);
-      box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+    .cta {
+      background: #ffcc00;
+      text-align: center;
+      padding: 50px 20px;
+    }
+
+    .cta h2 {
+      margin-bottom: 15px;
+    }
+
+    .cta a {
+      background: #25d366;
+      color: #fff;
+      padding: 15px 30px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-size: 1.1rem;
+      font-weight: bold;
+    }
+
+    .whatsapp-float {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #25d366;
+      color: #fff;
+      padding: 15px 18px;
+      border-radius: 50%;
+      font-size: 22px;
+      text-decoration: none;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    }
+
+    footer {
+      background: #222;
+      color: #fff;
+      text-align: center;
+      padding: 20px;
+      font-size: 0.9rem;
     }
   </style>
 </head>
 <body>
-  <!-- Google Tag Manager (noscript) -->
-  <noscript>
-    <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PMXGHQP4"
-    height="0" width="0" style="display:none;visibility:hidden"></iframe>
-  </noscript>
-  <!-- End Google Tag Manager (noscript) -->
 
-  <!--
+<header>
+  <h1>🔥 PokéStore 🔥</h1>
+  <p>Os melhores produtos Pokémon para fãs de verdade. Cartas, pelúcias, action figures e muito mais.</p>
+</header>
 
+<section>
+  <h2 style="text-align:center;">Por que comprar com a gente?</h2>
+  <div class="benefits">
+    <div class="benefit">✔ Produtos 100% originais</div>
+    <div class="benefit">🚚 Entrega rápida em todo o Brasil</div>
+    <div class="benefit">💬 Atendimento direto no WhatsApp</div>
+    <div class="benefit">⭐ Qualidade aprovada por fãs Pokémon</div>
+  </div>
+</section>
+
+<section>
+  <h2 style="text-align:center;">Produtos em destaque</h2>
+  <div class="products">
+
+    <div class="product">
+      <img src="https://images.pokemontcg.io/base1/4_hires.png">
+      <h3>Carta Charizard Base Set</h3>
+      <p class="price">R$ 299,90</p>
+    </div>
+
+    <div class="product">
+      <img src="https://assets.pokemon.com/assets/cms2/img/pokedex/full/025.png">
+      <h3>Pelúcia Pikachu</h3>
+      <p class="price">R$ 129,90</p>
+    </div>
+
+    <div class="product">
+      <img src="https://assets.pokemon.com/assets/cms2/img/pokedex/full/006.png">
+      <h3>Action Figure Charizard</h3>
+      <p class="price">R$ 189,90</p>
+    </div>
+
+    <div class="product">
+      <img src="https://assets.pokemon.com/assets/cms2/img/pokedex/full/150.png">
+      <h3>Figure Mewtwo</h3>
+      <p class="price">R$ 219,90</p>
+    </div>
+
+    <div class="product">
+      <img src="https://assets.pokemon.com/assets/cms2/img/pokedex/full/133.png">
+      <h3>Pelúcia Eevee</h3>
+      <p class="price">R$ 119,90</p>
+    </div>
+
+    <div class="product">
+      <img src="https://images.pokemontcg.io/swsh4/25_hires.png">
+      <h3>Carta VMAX Pikachu</h3>
+      <p class="price">R$ 149,90</p>
+    </div>
+
+  </div>
+</section>
+
+<section class="cta">
+  <h2>Curtiu algum produto?</h2>
+  <p>Chama a gente no WhatsApp e garanta o seu agora mesmo!</p>
+  <br>
+  <a href="https://wa.me/5565992010667" target="_blank">
+    Falar no WhatsApp
+  </a>
+</section>
+
+<a class="whatsapp-float" href="https://wa.me/5565992010667" target="_blank">💬</a>
+
+<footer>
+  © 2026 PokéStore — Este site é um projeto educacional.
+</footer>
+
+</body>
+</html>
 
 
